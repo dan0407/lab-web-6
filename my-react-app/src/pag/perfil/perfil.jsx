@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../services/firebaseConfi';
 import { doc, setDoc } from 'firebase/firestore';
-
+import './perfil.css';
 const Perfil = () => {
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
@@ -64,83 +64,48 @@ const Perfil = () => {
 		}
 	};
 
-	const renderStep = () => {
-		switch (step) {
-			case 1:
-				return (
-					<div>
-						<h2>Selecciona tu Imagen de Perfil</h2>
-						<div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
-							{predefinedImages.map((image, index) => (
-								<img
-									key={index}
-									src={image}
-									alt={`Avatar ${index + 1}`}
-									style={{
-										width: '100px',
-										height: '100px',
-										cursor: 'pointer',
-										border: formData.profileImage === image ? '2px solid blue' : '2px solid transparent',
-									}}
-									onClick={() => setFormData({ ...formData, profileImage: image })}
-								/>
-							))}
-						</div>
-						{!formData.profileImage && <p>Por favor, selecciona una imagen.</p>}
-					</div>
-				);
-			case 2:
-				return (
-					<div>
-						<h2>Escribe una Descripción Personal</h2>
-						<textarea
-							name='description'
-							value={formData.description}
-							onChange={handleChange}
-							placeholder='Escribe algo sobre ti...'
-							required
-						/>
-					</div>
-				);
-			case 3:
-				return (
-					<div>
-						<h2>Selecciona tus Intereses</h2>
-						{interestsOptions.map((interest) => (
-							<div key={interest}>
-								<input
-									type='checkbox'
-									checked={formData.interests.includes(interest)}
-									onChange={() => handleInterestChange(interest)}
-								/>
-								{interest}
-							</div>
-						))}
-					</div>
-				);
-			default:
-				return null;
-		}
-	};
-
 	return (
-		<div>
+		<div className='perfil-container'>
 			<h1>Completa tu Perfil</h1>
-			<form onSubmit={handleSubmit}>
-				{renderStep()}
-				<div style={{ marginTop: '20px' }}>
-					{step > 1 && (
-						<button type='button' onClick={() => setStep(step - 1)} style={{ marginRight: '10px' }}>
-							Anterior
-						</button>
-					)}
-					{step < 3 ? (
-						<button type='button' onClick={() => setStep(step + 1)}>
-							Siguiente
-						</button>
-					) : (
-						<button type='submit'>Guardar Perfil</button>
-					)}
+			<div className='perfil-step'>
+				<h2>Selecciona tu Imagen de Perfil</h2>
+				<div className='perfil-images'>
+					{predefinedImages.map((image, index) => (
+						<img
+							key={index}
+							src={image}
+							alt={`Avatar ${index + 1}`}
+							className={formData.profileImage === image ? 'selected' : ''}
+							onClick={() => setFormData({ ...formData, profileImage: image })}
+						/>
+					))}
+				</div>
+			</div>
+			<form className='perfil-form' onSubmit={handleSubmit}>
+				<label>Descripción Personal:</label>
+				<textarea
+					name='description'
+					value={formData.description}
+					onChange={handleChange}
+					placeholder='Escribe algo sobre ti...'
+					required
+				/>
+				<label>Selecciona tus Intereses:</label>
+				<ul className='perfil-interests'>
+					{interestsOptions.map((interest) => (
+						<li key={interest}>
+							<input
+								type='checkbox'
+								id={interest}
+								checked={formData.interests.includes(interest)}
+								onChange={() => handleInterestChange(interest)}
+							/>
+							<label htmlFor={interest}>{interest}</label>
+						</li>
+					))}
+				</ul>
+				<div className='perfil-buttons'>
+					<button type='submit'>Guardar Perfil</button>
 				</div>
 			</form>
 		</div>

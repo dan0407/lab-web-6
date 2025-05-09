@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth, db } from '../../services/firebaseConfi';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-
+import './dashboard.css';
 const Dashboard = () => {
 	const navigate = useNavigate();
 	const [userProfile, setUserProfile] = useState(null);
@@ -53,30 +53,24 @@ const Dashboard = () => {
 	};
 
 	return (
-		<div>
+		<div className='dashboard-container'>
 			<h1>Dashboard</h1>
 			{userProfile ? (
 				isProfileComplete ? (
-					<div>
-						<h2>Resumen del Perfil</h2>
+					<div className='dashboard-profile'>
+						<img src={userProfile.profileImage || 'default-avatar-url'} alt='Avatar' />
+						<h2>{userProfile.username || 'Usuario'}</h2>
 						<p>
-							<strong>Nombre de Usuario:</strong> {userProfile.username}
+							<strong>Correo Electrónico:</strong> {userProfile.email || 'correo@example.com'}
 						</p>
 						<p>
-							<strong>Correo Electrónico:</strong> {userProfile.email}
+							<strong>Fecha de Nacimiento:</strong> {userProfile.birthdate || 'N/A'}
 						</p>
 						<p>
-							<strong>Fecha de Nacimiento:</strong> {userProfile.birthdate}
+							<strong>Descripción:</strong> {userProfile.description || 'Sin descripción'}
 						</p>
 						<p>
-							<strong>Descripción:</strong> {userProfile.description}
-						</p>
-						<p>
-							<strong>Intereses:</strong> {userProfile.interests?.join(', ')}
-						</p>
-						<p>
-							<strong>Imagen de Perfil:</strong>{' '}
-							<img src={userProfile.profileImage} alt='Avatar' style={{ width: '50px', height: '50px' }} />
+							<strong>Intereses:</strong> {userProfile.interests?.join(', ') || 'Ninguno'}
 						</p>
 					</div>
 				) : (
@@ -85,10 +79,8 @@ const Dashboard = () => {
 			) : (
 				<p>Cargando datos del usuario...</p>
 			)}
-			<div style={{ marginTop: '20px' }}>
-				<button onClick={handleGoToPerfil} style={{ marginRight: '10px' }}>
-					Ir a Perfil
-				</button>
+			<div className='dashboard-buttons'>
+				<button onClick={handleGoToPerfil}>Ir a Perfil</button>
 				<button onClick={handleLogout}>Cerrar Sesión</button>
 			</div>
 		</div>

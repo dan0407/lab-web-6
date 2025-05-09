@@ -1,0 +1,91 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  /* Fondo gris claro */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  /* Fondo blanco */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  /* Sombra más pronunciada */
+  text-align: center;
+  position: relative;
+}
+
+.dashboard-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333333;
+  /* Texto gris oscuro */
+}
+
+.dashboard-profile {
+  margin-top: -60px;
+  /* Imagen sobresale del contenedor */
+  position: relative;
+}
+
+.dashboard-profile img {
+  width: 120px;
+  height: 120px;
+  border: 5px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #f4f6f9;
+  margin-top: 3rem;
+}
+
+.dashboard-profile h2 {
+  margin: 15px 0 5px;
+  font-size: 22px;
+  color: #000000;
+  /* Texto negro */
+}
+
+.dashboard-profile p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555555;
+  /* Texto gris medio */
+}
+
+.dashboard-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dashboard-buttons button {
+  background-color: #007bff;
+  /* Azul rey */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-buttons button:hover {
+  background-color: #0056b3;
+  /* Azul rey más oscuro */
+  transform: scale(1.05);
+  /* Efecto de zoom */
+}
+
+.dashboard-buttons button:active {
+  transform: scale(0.95);
+  /* Efecto de clic */
+}

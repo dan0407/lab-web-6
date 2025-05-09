@@ -1,0 +1,149 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  /* Fondo gris claro */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.perfil-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  /* Fondo blanco */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  /* Sombra */
+  text-align: center;
+}
+
+.perfil-step {
+  margin: 20px 0;
+}
+
+.perfil-images {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.perfil-images img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.perfil-images img.selected {
+  border-color: #007bff;
+  /* Azul rey */
+  transform: scale(1.1);
+  /* Efecto de zoom */
+}
+
+.perfil-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.perfil-form label {
+  text-align: left;
+  font-weight: bold;
+  color: #333333;
+  /* Texto gris oscuro */
+}
+
+.perfil-form input,
+.perfil-form textarea,
+.perfil-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.perfil-form input:focus,
+.perfil-form textarea:focus,
+.perfil-form select:focus {
+  border-color: #007bff;
+  /* Azul rey */
+}
+
+.perfil-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.perfil-buttons button {
+  background-color: #007bff;
+  /* Azul rey */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.perfil-buttons button:hover {
+  background-color: #0056b3;
+  /* Azul rey más oscuro */
+  transform: scale(1.05);
+  /* Efecto de zoom */
+}
+
+.perfil-buttons button:active {
+  transform: scale(0.95);
+  /* Efecto de clic */
+}
+
+.perfil-interests {
+  list-style-type: none; /* Elimina los puntos predeterminados */
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.perfil-interests li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.perfil-interests li:hover {
+  background-color: #f4f6f9; /* Fondo gris claro al pasar el cursor */
+  transform: scale(1.02); /* Efecto de zoom */
+}
+
+.perfil-interests input[type="checkbox"] {
+  accent-color: #007bff; /* Azul rey para los checkboxes */
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.perfil-interests label {
+  font-size: 14px;
+  color: #333333; /* Texto gris oscuro */
+  cursor: pointer;
+}
