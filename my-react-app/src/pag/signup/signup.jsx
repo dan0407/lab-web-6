@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
-import { db } from "../../services/firebaseConfi"; // Importa Firestore
+import { db } from "../../services/firebaseConfi"; 
+import { useNavigate } from "react-router-dom"; 
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     birthdate: "",
-    password: "", // Incluye la contraseña en el estado
+    password: "", 
   });
 
   const [error, setError] = useState("");
@@ -24,14 +25,12 @@ const Signup = () => {
 
     const { email, username, birthdate, password } = formData;
 
-    // Validación de datos
     if (!email || !username || !birthdate || !password) {
       setError("Todos los campos son obligatorios.");
       return;
     }
 
     try {
-      // Guardar datos en Firestore
       await setDoc(doc(db, "users", email), {
         username,
         birthdate,
@@ -91,7 +90,7 @@ const Signup = () => {
             required
           />
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit" >Enviar</button>
       </form>
     </div>
   );

@@ -7,7 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleSignupRedirect = () => {
-    navigate("/signup");
+    navigate("/signup"); 
   };
 
   return (
