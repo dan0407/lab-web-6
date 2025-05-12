@@ -32,17 +32,14 @@ const Signup = () => {
 		}
 
 		try {
-			// Registrar usuario con Firebase Authentication
 			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-			// Guardar datos adicionales en Firestore
 			await setDoc(doc(db, 'users', userCredential.user.uid), {
 				email,
 				username,
 				birthdate,
 			});
 
-			// Redirigir al dashboard después de un registro exitoso
 			navigate('/dashboard');
 		} catch (err) {
 			setError('Error al registrarse: ' + err.message);

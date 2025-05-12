@@ -11,7 +11,7 @@ const Perfil = () => {
 		interests: [],
 	});
 
-	const [step, setStep] = useState(1);
+	
 
 	const interestsOptions = ['Arte', 'Ciencia', 'Juegos', 'Tecnología', 'Deportes'];
 
